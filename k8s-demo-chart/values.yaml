@@ -1,0 +1,53 @@
+# Default values for k8s-demo-chart.
+# This is a YAML-formatted file.
+
+replicaCount:
+  frontend: 3
+  backend: 1
+  mongo: 1
+
+image:
+  frontend:
+    repository: docker-frontend
+    tag: latest
+    pullPolicy: IfNotPresent
+  backend:
+    repository: docker-backend
+    tag: latest
+    pullPolicy: IfNotPresent
+  mongo:
+    repository: mongo
+    tag: "7"
+    pullPolicy: IfNotPresent
+
+service:
+  frontend:
+    type: NodePort
+    port: 80
+    targetPort: 5173
+    nodePort: 30001
+  backend:
+    type: ClusterIP
+    port: 3000
+    targetPort: 3000
+  mongo:
+    type: ClusterIP
+    port: 27017
+    targetPort: 27017
+
+backendConfig:
+  port: "3000"
+  mongoDbName: "k8s-demo"
+
+# Centralized sensitive configuration values.
+# Helm templates will dynamically Base64 encode values using the `b64enc` filter.
+secrets:
+  mongoUri: "mongodb://mongo-service:27017/k8s-demo"
+
+persistence:
+  storageClass: manual
+  size: 1Gi
+  hostPath: "/data/mongo"
+
+ingress:
+  host: myapp.local

@@ -1,0 +1,14 @@
+# Overrides for production environment
+replicaCount:
+  frontend: 3
+  backend: 3
+  mongo: 1
+
+image:
+  frontend:
+    pullPolicy: Always
+  backend:
+    pullPolicy: Always
+
+ingress:
+  host: myapp.com
