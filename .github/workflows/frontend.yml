@@ -6,7 +6,7 @@ on:
       - main
     paths:
       - 'demo-k8s-project/frontend/**'
-      - 'demo-k8s-project/.github/workflows/frontend.yml'
+      - '.github/workflows/frontend.yml'
   pull_request:
     branches:
       - main
