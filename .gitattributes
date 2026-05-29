@@ -1,0 +1,16 @@
+# Set default behavior to automatically normalize line endings
+* text=auto
+
+# Enforce LF (Linux/Unix line endings) for all YAML, Shell scripts, Dockerfiles, and JSON
+*.yml text eol=lf
+*.yaml text eol=lf
+*.sh text eol=lf
+*Dockerfile* text eol=lf
+*.json text eol=lf
+
+# Denote all files that should be treated as binary (no line ending normalization)
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
