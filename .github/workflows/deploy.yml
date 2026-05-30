@@ -5,14 +5,14 @@ on:
     branches:
       - main
     paths:
-      - 'k8s-demo-chart/**'
+      - 'demo-k8s-project/k8s-demo-chart/**'
       - 'values-prod.yaml'
       - '.github/workflows/deploy.yml'
   pull_request:
     branches:
       - main
     paths:
-      - 'k8s-demo-chart/**'
+      - 'demo-k8s-project/k8s-demo-chart/**'
       - 'values-prod.yaml'
 
 jobs:
@@ -30,12 +30,12 @@ jobs:
 
       - name: Helm Lint
         run: |
-          helm lint ./k8s-demo-chart
+          helm lint ./demo-k8s-project/k8s-demo-chart
 
       - name: Helm Template Validation (Default Values)
         run: |
-          helm template myapp ./k8s-demo-chart
+          helm template myapp ./demo-k8s-project/k8s-demo-chart
 
       - name: Helm Template Validation (Production Values)
         run: |
-          helm template myapp ./k8s-demo-chart --values ./values-prod.yaml
+          helm template myapp ./demo-k8s-project/k8s-demo-chart --values ./values-prod.yaml
